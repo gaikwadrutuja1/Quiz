@@ -4,43 +4,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Java Quiz - Test Your Knowledge</title>
 <style>
-  
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    background-image: url("java.png");
+    background: linear-gradient(to right, #00c6ff, #0072ff), url("images/java.png"); /* Combining gradient and background image */
+    background-size: cover; /* Make sure the image covers the entire screen */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
-  }
-  
-  /* Styling for images around the box */
-  .java-img {
+}
+
+/* Styling for images around the box */
+.java-img {
     position: absolute;
     max-width: 100px; /* Adjust size of images */
     opacity: 0.8; /* Slight transparency for better visibility */
-  }
-  
-  .top-left {
+}
+
+.top-left {
     top: -30px;
     left: -30px;
-  }
-  
-  .bottom-right {
+}
+
+.bottom-right {
     bottom: -30px;
     right: -30px;
-  }
-  
-  .quiz-container {
+}
+
+.quiz-container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
@@ -48,76 +49,59 @@
     width: 60%;
     text-align: left;
     position: relative; /* For absolute positioning of images */
-  }
-  
-  /* Other Styles for the Quiz */
-  .question {
+}
+
+/* Other Styles for the Quiz */
+.question {
     font-size: 18px;
     margin: 10px 0;
-  }
-  
-  .options {
+}
+
+.options {
     list-style: none;
     padding: 0;
-  }
-  
-  .options li {
+}
+
+.options li {
     margin: 10px 0;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .options li:hover {
+}
+
+.options li:hover {
     background-color: #f0f0f0;
-  }
-  
-  .navigation {
+}
+
+.navigation {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
-  }
-  
-  #quiz-container {
+}
+
+#quiz-container {
     display: none;
-  }
-  
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-  }
-  
-  /* Title Screen */
-  .title-screen {
+}
+
+/* Title Screen */
+.title-screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 36px;
     margin-bottom: 20px;
     font-weight: bold;
     text-transform: uppercase;
-  }
-  
-  button {
+}
+
+button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -126,77 +110,77 @@
     cursor: pointer;
     border-radius: 5px;
     margin-top: 20px;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
-  
-  /* Quiz Section */
-  .quiz-container {
+}
+
+/* Quiz Section */
+.quiz-container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     width: 60%;
     text-align: left;
-  }
-  
-  .question {
+}
+
+.question {
     font-size: 18px;
     margin: 10px 0;
-  }
-  
-  .options {
+}
+
+.options {
     list-style: none;
     padding: 0;
-  }
-  
-  .options li {
+}
+
+.options li {
     margin: 10px 0;
     background-color: #8f8cb7;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .options li:hover {
+}
+
+.options li:hover {
     background-color: #f0f0f0;
-  }
-  
-  .navigation {
+}
+
+.navigation {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
-  }
-  
-  #result-screen {
+}
+
+#result-screen {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
     width: 60%;
-  }
-  
-  #score {
+}
+
+#score {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
-  
-  #emoji {
+}
+
+#emoji {
     font-size: 48px;
-  }
-  
-  #retry-btn {
+}
+
+#retry-btn {
     margin-top: 20px;
-  }
-  
-  /* Hidden Elements */
-  #quiz-container, #result-screen {
+}
+
+/* Hidden Elements */
+#quiz-container, #result-screen {
     display: none;
-  }
-  
+}
+
 </style></head>
 <body>
 

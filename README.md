@@ -225,16 +225,129 @@
   </div>
 
   <script>
-    // Smooth scrolling when clicking on navigation links
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+  const quizData = [
+    {
+      question: "Which of the following is a primitive data type in Java?",
+      options: ["String", "int", "ArrayList", "Object"],
+      correctAnswer: 1
+    },
+    {
+      question: "Which keyword is used to define a class in Java?",
+      options: ["class", "define", "new", "type"],
+      correctAnswer: 0
+    },
+    {
+      question: "What is the size of the int data type in Java?",
+      options: ["16 bit", "32 bit", "64 bit", "128 bit"],
+      correctAnswer: 1
+    },
+    {
+      question: "Which of the following is used to handle exceptions in Java?",
+      options: ["try-catch", "if-else", "for-loop", "do-while"],
+      correctAnswer: 0
+    },
+    {
+      question: "Which method is used to start a thread in Java?",
+      options: ["run()", "start()", "execute()", "initiate()"],
+      correctAnswer: 1
+    }
+  ];
+  
+  let currentQuestionIndex = 0;
+  let score = 0;
+  
+  function loadQuestion() {
+    const quiz = document.getElementById('quiz');
+    quiz.innerHTML = '';
+  
+    const questionData = quizData[currentQuestionIndex];
+  
+    const questionElement = document.createElement('div');
+    questionElement.classList.add('question');
+    questionElement.innerText = questionData.question;
+  
+    const optionsList = document.createElement('ul');
+    optionsList.classList.add('options');
+  
+    questionData.options.forEach((option, index) => {
+      const optionItem = document.createElement('li');
+      const radioButton = document.createElement('input');
+      radioButton.type = 'radio';
+      radioButton.name = `question${currentQuestionIndex}`;
+      radioButton.value = index;
+  
+      optionItem.appendChild(radioButton);
+      optionItem.appendChild(document.createTextNode(option));
+      optionsList.appendChild(optionItem);
     });
-});
-
+  
+    quiz.appendChild(questionElement);
+    quiz.appendChild(optionsList);
+  }
+  
+  function showResult() {
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    const scoreElement = document.getElementById('score');
+    const emojiElement = document.getElementById('emoji');
+    
+    scoreElement.innerText = `Your Score: ${score} / ${quizData.length}`;
+  
+    // Display emoji based on score
+    if (score === quizData.length) {
+      emojiElement.innerText = "🎉 Excellent! Perfect Score! 🎉";
+    } else if (score >= quizData.length * 0.8) {
+      emojiElement.innerText = "😁 Great Job! You're a Java Pro! 😁";
+    } else if (score >= quizData.length * 0.5) {
+      emojiElement.innerText = "🙂 Good Effort! Keep Practicing! 🙂";
+    } else {
+      emojiElement.innerText = "😞 Better Luck Next Time! 😞";
+    }
+  }
+  
+  document.getElementById('start-btn').addEventListener('click', () => {
+    document.getElementById('title-screen').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    loadQuestion();
+  });
+  
+  document.getElementById('next-btn').addEventListener('click', () => {
+    const selectedOption = document.querySelector(`input[name="question${currentQuestionIndex}"]:checked`);
+    
+    if (selectedOption) {
+      const selectedAnswer = parseInt(selectedOption.value);
+      const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+  
+      if (selectedAnswer === correctAnswer) {
+        score++;
+      }
+    }
+  
+    currentQuestionIndex++;
+    
+    if (currentQuestionIndex < quizData.length) {
+      loadQuestion();
+      document.getElementById('previous-btn').style.display = 'inline-block'; // Show Previous Button
+    } else {
+      showResult();
+    }
+  });
+  
+  document.getElementById('previous-btn').addEventListener('click', () => {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      loadQuestion();
+    }
+  });
+  
+  document.getElementById('retry-btn').addEventListener('click', () => {
+    // Reset quiz
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('result-screen').style.display = 'none';
+    document.getElementById('title-screen').style.display = 'flex';
+  });
+  
   </script>
 </body>
 </html>

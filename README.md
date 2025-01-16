@@ -47,6 +47,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     width: 60%;
+    height: 60%;
     text-align: left;
     position: relative; /* For absolute positioning of images */
 }

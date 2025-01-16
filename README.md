@@ -12,7 +12,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #00c6ff, #0072ff), url("images/java.png"); /* Combining gradient and background image */
+    background: linear-gradient(to right, #00c6ff, #0072ff), url("java.png"); /* Combining gradient and background image */
     background-size: cover; /* Make sure the image covers the entire screen */
     background-position: center center; /* Center the image */
     background-attachment: fixed; /* Keeps the background fixed when scrolling */
